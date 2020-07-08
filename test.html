@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Parallax Test</title>
+    <style>
+        body {
+            overflow: hidden;
+            color: white;
+        }
+
+        #main {
+            min-height: 100vh;
+            min-width: 100vw;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #bg {
+            position: absolute;
+            background-image: url("planet.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            margin-left: -5%;
+            width: 110%;
+            margin-top: -5%;
+            height: 120%;
+        }
+
+        .scene,
+        .layer {
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .wrapper {
+            min-height: 460px;
+            position: absolute;
+            overflow: hidden;
+            display: table;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .move-link {
+            position: absolute;
+            border: 20px solid transparent;
+            border-image-source: url("border.png");
+            border-image-slice: 27 27 27 27;
+            border-image-width: 20px 20px 20px 20px;
+            border-image-outset: 0px 0px 0px 0px;
+            border-image-repeat: stretch stretch;
+            transition: 0.5s all;
+        }
+
+        .move-link:hover {
+            padding: 5px 15px;
+        }
+
+        #about-me-link {
+            margin-left: 30%;
+            margin-top: 30%;
+        }
+
+        #my-work-link {
+            margin-left: 60%;
+            margin-top: 30%;
+        }
+
+        #contact-me-link {
+            margin-left: 60%;
+            margin-top: 10%;
+        }
+
+        .selected {
+            display: block !important;
+
+        }
+
+        .console::after {
+            content:"";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            25% {content:"_"}
+            75% {content:" "}
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="main" class="scene wrapper">
+
+        <div id="bg" class="layer" data-depth="0.1">
+        </div>
+        <div id="links" class="layer" data-depth="0.25">
+            <div id="about-me-link" class="move-link">
+                <a href="#about">ABOUT ME</a>
+            </div>
+            <div id="my-work-link" class="move-link">
+                <a href="#work">MY WORK</a>
+            </div>
+            <div id="contact-me-link" class="move-link">
+                <a href="#contact">CONTACT ME</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.js"></script>
+    <script>
+        let plx = new Parallax(document.getElementById('main'), {
+            pointerEvents: true
+        });
+
+        $('.move-link').on('click',function(){
+            $('#bg').css('transform', 'scale(1.5)');
+        })
+    </script>
+</body>
+
+</html>
