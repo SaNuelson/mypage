@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/animation.css">
+</head>
+
+<body>
+    <div class="hyperspace">
+        <div class="wrap">
+            <div class="wall wall-right"></div>
+            <div class="wall wall-left"></div>
+            <div class="wall wall-top"></div>
+            <div class="wall wall-bottom"></div>
+            <div class="wall wall-back"></div>
+        </div>
+        <div class="wrap">
+            <div class="wall wall-right"></div>
+            <div class="wall wall-left"></div>
+            <div class="wall wall-top"></div>
+            <div class="wall wall-bottom"></div>
+            <div class="wall wall-back"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+        $('.hyperspace').on('click', () => {
+            $('.hyperspace').fadeOut(1000)
+        });
+    </script>
+</body>
+
+</html>

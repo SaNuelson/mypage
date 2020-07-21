@@ -3,157 +3,60 @@
 
 <head>
     <title>Parallax Test</title>
-    <style>
-        body {
-            overflow: hidden;
-            color: white;
-        }
-
-        #main {
-            min-height: 100vh;
-            min-width: 100vw;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        #bg {
-            position: absolute;
-            background-image: url("planet.jpg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            margin-left: -5%;
-            width: 110%;
-            margin-top: -5%;
-            height: 120%;
-        }
-
-        .scene,
-        .layer {
-            min-width: 100%;
-            min-height: 100%;
-        }
-
-        .wrapper {
-            min-height: 460px;
-            position: absolute;
-            overflow: hidden;
-            display: table;
-            height: 100%;
-            width: 100%;
-            left: 0;
-            top: 0;
-        }
-
-        .move-link {
-            position: absolute;
-            border: 20px solid transparent;
-            border-image-source: url("uiborder.png");
-            border-image-slice:45 45 45 45 fill;
-            border-image-width:20px 20px 20px 20px;
-            border-image-outset:0px 0px 0px 0px;
-            border-image-repeat:stretch stretch;
-            transition: 0.5s all;
-            background-color: rgba(20,20,180,0.6);
-            border-radius: 20px;
-
-            min-width: 20px;
-            min-height: 20px;
-
-            max-height: 100px;
-            max-width: 200px;
-        }
-
-        .move-link:hover {
-            padding: 5px 15px;
-        }
-
-        #about-me-link {
-            margin-left: 30%;
-            margin-top: 30%;
-        }
-
-        #my-work-link {
-            margin-left: 60%;
-            margin-top: 30%;
-        }
-
-        #contact-me-link {
-            margin-left: 60%;
-            margin-top: 10%;
-        }
-
-        .selected {
-            display: block !important;
-            animation: expand 1.5s ease-in-out forwards;
-            max-height: 100%;
-            max-width: 100%;
-            z-index: 5;
-        }
-
-        @keyframes expand {
-            100% {
-                margin: 5vh 0 0 10vw;
-                padding: 0;
-                min-width: calc(100% - 40px - 20vw);
-                min-height: calc(100% - 40px - 10vh);
-            }
-        }
-
-        .console::after {
-            content: "";
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            25% {
-                content: "_"
-            }
-
-            75% {
-                content: " "
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/animation.css">
 </head>
 
 <body>
     <div id="main" class="scene wrapper">
 
-        <div id="bg" class="layer" data-depth="0.1">
+        <div id="bg" class="layer" data-depth="0.25"></div>
+
+        <div id="bfg" class="layer" data-depth="0.1">
+            <div class="smol star" style="left:20%; top: 25%"></div>
+            <div class="smol star" style="left:65%; top: 85%"></div>
+            <div class="smol star" style="left:85%; top: 90%"></div>
+            <div class="smol star" style="left:50%; top: 15%"></div>
+            <div class="smol star" style="left:10%; top: 15%"></div>
+            <div class="smol star" style="left:50%; top: 95%"></div>
+            <div class="smol star" style="left:35%; top: 65%"></div>
+            <div class="smol star" style="left:25%; top: 30%"></div>
+            <div class="smol star" style="left:40%; top: 25%"></div>
+            <div class="chonky star" style="left:10%; top: 55%"></div>
+            <div class="chonky star" style="left:15%; top: 50%"></div>
+            <div class="chonky star" style="left:65%; top: 5%"></div>
+            <div class="chonky star" style="left:80%; top: 15%"></div>
+            <div class="chonky star" style="left:85%; top: 25%"></div>
+            <div class="chonky star" style="left:5%; top: 45%"></div>
+            <div class="chonky star" style="left:35%; top: 80%"></div>
+            <div class="chonky star" style="left:75%; top: 20%"></div>
         </div>
+
         <div id="links" class="layer" data-depth="0.45">
-            <div id="about-me-link" class="move-link">
-                <a href="#about">ABOUT ME</a>
+            <div id="about-me-link" class="page-div" data-page="aboutme" data-content="ABOUT ME">
+                <p class="unselectable">ABOUT ME</p>
             </div>
-            <div id="my-work-link" class="move-link">
-                <a href="#work">MY WORK</a>
+            <div id="my-work-link" class="page-div" data-page="mywork" data-content="MY WORK">
+                <p class="unselectable">MY WORK</p>
             </div>
-            <div id="contact-me-link" class="move-link">
-                <a href="#contact">CONTACT ME</a>
+            <div id="contact-me-link" class="page-div" data-page="contactme" data-content="CONTACT ME">
+                <p class="unselectable">CONTACT ME</p>
+            </div>
+            <div id="my-fun-link" class="page-div" data-page="myfun" data-content="ENTERTAINMENT">
+                <p class="unselectable">ENTERTAINMENT</p>
             </div>
         </div>
 
-        <div id="cpoint" style="position:absolute;width:50%;height:50%"></div>
+        <div id="cpoint" style="position:absolute;left:50%;top:50%;z-index:-5"></div>
 
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <script src="parallax.js"></script>
-    <script>
-        let plx = new Parallax(document.getElementById('main'), {
-            pointerEvents: true,
-            hoverElement: true
-        });
-
-        $('.move-link').on('click', function (e) {
-            $(this).addClass('selected', 1000);
-            plx.disable();
-        })
-    </script>
+    <script src="js/parallax.js"></script>
+    <!-- Move to jsdn -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
